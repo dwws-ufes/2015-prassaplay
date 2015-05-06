@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link
+		href="#{facesContext.externalContext.requestContextPath}/resources/css/style.css"
+		rel="stylesheet" type="text/css" media="screen" />
+	<title><h:outputText value="PrassaPlay - " /><ui:insert
+			name="titulo" /></title>
+</h:head>
+
+<h:body>
+	<div id="wrapper">
+		<h:form>
+			<div id="menu">
+				<ul>
+					<li><h:commandLink value="Home" action="/index.xhtml"/></li>
+					<li><h:commandLink value="Registre-se" action="/manageUsuarios/form.faces"/></li>
+					<li><h:commandLink value="Avaliar Jogo" action="/review/review.xhtml"/></li>
+					<li><h:commandLink value="Sobre" action="/sobreNos/sobreNos.xhtml"/></li>
+					<li><h:commandLink value="Contate-nos" action="/contato/contato.xhtml"/></li>
+					<li><h:commandLink value="Reviews" action="/review/listReview.faces"/></li>
+				</ul>
+			</div>
+		</h:form>
+	</div>
+		<!-- end #menu -->
+		<div id="page">
+			<ui:insert name="conteudo">Conteúdo não especificado...</ui:insert>
+		</div>
+	<div id="footer">
+		<p>&copy; Untitled. All rights reserved. photo by <a href="http://welcometointernet.org/">Internet</a>. Design by <a href="http://google.com.br" rel="nofollow">TEMPLATED</a>. <a href="http://lmgtfy.com/?q=templated">Templated?</a></p>
+	</div>
+	<!-- end #footer -->
+</h:body>
+</html>

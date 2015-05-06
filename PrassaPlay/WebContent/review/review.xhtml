@@ -1,0 +1,61 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template="/resources/decorator.xhtml">
+
+	<ui:define name="titulo">
+		<h:outputText value="Review" />
+	</ui:define>
+
+	<ui:define name="conteudo">
+		<div class="post">
+			<div class="entry">
+				<h2 class="title">
+					<h:outputText value="Adicione um review legal" />
+				</h2>
+
+				<h:form id="dadosUsuario">
+					<p>
+						<h:outputText value="#{msgs['manageReviews.form.usuario']}" />
+						<p:selectOneListbox
+							value="#{manageReviewsController.review.usuario}">
+							<f:selectItems value="#{manageReviewsController.listaUsuarios}" />
+						</p:selectOneListbox>
+					</p>
+					
+					<p>
+						<h:outputText value="#{msgs['manageReviews.form.jogo']}" />
+						<p:selectOneListbox value="#{manageReviewsController.review.jogo}" converter="jogoConverter" var="t" >
+							<f:selectItems itemLabel="#{jogo.nome}" var="jogo" value="#{manageReviewsController.listaJogos}" itemValue="#{jogo}"/>
+ 
+								<p:column>
+									<h:outputText value="#{t.nome}" />
+								</p:column>
+						</p:selectOneListbox>
+					</p>
+					<p>
+						<h:panelGroup>
+							<h:outputText value="#{msgs['manageReviews.form.nota']}" />
+							<h:inputText value="#{manageReviewsController.review.nota}" />
+						</h:panelGroup>
+					</p>
+
+					<p>
+						<h:panelGroup>
+							<h:outputText value="#{msgs['manageReviews.form.texto']}" />
+							<h:inputTextarea value="#{manageReviewsController.review.texto}" />
+						</h:panelGroup>
+					</p>
+
+					<h:commandButton action="#{manageReviewsController.salvar}"
+						value="OK" />
+					<h:commandButton action="/index.xhtml" value="Cancelar"
+						immediate="true" />
+				</h:form>
+			</div>
+		</div>
+	</ui:define>
+</ui:composition>
