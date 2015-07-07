@@ -1,0 +1,63 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template="/resources/decorator.xhtml">
+
+	<ui:define name="titulo">
+		<h:outputText value="Review" />
+	</ui:define>
+
+	<ui:define name="conteudo">
+		<div class="post">
+			<div class="entry">
+				<h2 class="title">
+					<h:outputText value="Adicione um review legal" />
+				</h2>
+
+
+					<p>
+						<h:panelGroup>
+							<h:outputText value="Nome" />
+							<h:inputText id="nome"
+								value="#{manageReviewsController.review.jogo.nome}">
+								<f:ajax event="blur"
+									listener="#{manageReviewsController.suggestDescription}"
+									execute="@this" render="descricao" />
+							</h:inputText>
+						</h:panelGroup>
+					</p>
+
+					<p>
+						<h:panelGroup>
+							<h:outputText value="Descrição" />
+							<h:inputTextarea id="descricao" rows="10" style="width:700px;"
+								value="#{manageReviewsController.review.jogo.descricao}" />
+						</h:panelGroup>
+					</p>
+
+					<p>
+						<h:panelGroup>
+							<h:outputText value="#{msgs['manageReviews.form.nota']}" />
+							<h:inputText value="#{manageReviewsController.review.nota}" />
+						</h:panelGroup>
+					</p>
+
+					<p>
+						<h:panelGroup>
+							<h:outputText value="#{msgs['manageReviews.form.texto']}" />
+							<h:inputTextarea value="#{manageReviewsController.review.texto}" />
+						</h:panelGroup>
+					</p>
+
+					<p:commandButton action="#{manageReviewsController.salvar}"
+						value="OK" ajax="false" />
+					<h:commandButton action="/index.xhtml" value="Cancelar"
+						immediate="true" />
+				</h:form>
+			</div>
+		</div>
+	</ui:define>
+</ui:composition>
